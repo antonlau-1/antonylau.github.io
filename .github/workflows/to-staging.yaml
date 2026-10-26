@@ -18,4 +18,4 @@ jobs:
           ref: main
           fetch-depth: 0
       - name: Push main to staging
-        run: git push origin HEAD: staging --force
+        run: git push origin HEAD:staging --force
