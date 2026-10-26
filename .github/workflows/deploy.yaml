@@ -1,0 +1,46 @@
+name: Deploy site
+
+on:
+  workflow_run:
+    workflows: ["Auto push main to staging", "Promote staging to stable"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: stable
+          path: stable
+      - uses: actions/checkout@v7
+        with:
+          ref: staging
+          path: staging
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: Build both sites
+        run: |
+          gem install jekyll webrick
+          jekyll build -s stable -d _site
+          jekyll build -s staging -d _site/staging --baseurl /staging
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v7
