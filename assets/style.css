@@ -1,0 +1,115 @@
+:root {
+    --bg: #ffffff;
+    --text: #222222;
+    --nav-bg: #C0FFEE;
+    --nav-text: #222222;
+    --outline: rgba(0, 0, 0, 0.3);
+    --track: rgba(0, 0, 0, 0.18);
+    --knob: #ffffff;
+}
+
+[data-theme="dark"] {
+    --bg: #1e1e1e;
+    --text: #eeeeee;
+    --nav-bg: #1f5c58;
+    --nav-text: #eeeeee;
+    --outline: rgba(255, 255, 255, 0.35);
+    --track: rgba(255, 255, 255, 0.25);
+    --knob: #1e1e1e;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: baskerville, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+    background: var(--nav-bg);
+    transition: background 0.2s ease;
+}
+
+nav a {
+    color: var(--nav-text);
+    text-decoration: none;
+}
+
+nav .brand {
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+
+nav ul a {
+    display: block;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: border-color 0.15s ease;
+}
+
+nav ul a:hover {
+    border-color: var(--outline);
+}
+
+/* Slider toggle */
+#theme-toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    border-radius: 14px;
+    background: var(--track);
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+#theme-toggle::before {
+    content: "☀";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--knob);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 22px;
+    text-align: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+[data-theme="dark"] #theme-toggle::before {
+    content: "☾";
+    transform: translateX(24px);
+}
+
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--outline);
+    outline-offset: 2px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
