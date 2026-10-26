@@ -38,7 +38,7 @@ jobs:
         run: |
           gem install jekyll webrick
           jekyll build -s stable -d _site
-          jekyll build -s staging -d _site/staging --baseurl /antonylau.github.io/staging
+          jekyll build -s staging -d _site/staging --baseurl /staging
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site

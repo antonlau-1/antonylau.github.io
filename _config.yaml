@@ -1,6 +1,4 @@
 title: Antony Lau's Website
 
-baseurl: "/antonylau.github.io"
-
 exclude:
   - README.md
