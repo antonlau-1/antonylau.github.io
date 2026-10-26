@@ -1,0 +1,48 @@
+main.contact {
+    justify-content: center;
+    align-items: center;
+}
+
+main.contact .contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem 2.5rem;
+    border: 1px solid var(--outline);
+    border-radius: 12px;
+}
+
+main.contact .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+main.contact .icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+main.contact .label {
+    font-weight: bold;
+}
+
+main.contact a {
+    color: inherit;
+}
+
+@media (max-width: 600px) {
+    main.contact .contact-card {
+        padding: 1.5rem;
+    }
+
+    main.contact .contact-row {
+        flex-wrap: wrap;
+    }
+}

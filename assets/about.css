@@ -1,0 +1,16 @@
+main.about {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+main.about h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}

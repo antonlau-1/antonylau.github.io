@@ -15,6 +15,9 @@
         })();
     </script>
     <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+    {% if page.page_css %}
+    <link rel="stylesheet" href="{{ '/assets/' | append: page.page_css | append: '.css' | relative_url }}">
+    {% endif %}
 </head>
 <body>
     <nav>
@@ -27,7 +30,7 @@
         <button id="theme-toggle" type="button" aria-label="Toggle light/dark mode"></button>
     </nav>
 
-    <main>
+    <main class="{{ page.page_css }}">
         {{ content }}
     </main>
 
